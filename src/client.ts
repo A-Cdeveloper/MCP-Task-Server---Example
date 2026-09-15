@@ -22,6 +22,11 @@ const transport = new StdioClientTransport({
   args: ["tsx", "src/server.ts"],
 });
 
+// Uncomment this to use a HTTP transport
+// const transport = new StreamableHTTPClientTransport(
+//   new URL("http://localhost:3000/mcp"),
+// );
+
 async function startClient() {
   await client.connect(transport);
   console.log("MCP Client started");

@@ -18,6 +18,11 @@ const server = new McpServer({
 
 const transport = new StdioServerTransport();
 
+// Uncomment this to use a HTTP transport
+// const transport = new StreamableHTTPServerTransport({
+//   sessionIdGenerator: () => randomUUID(),
+// });
+
 async function startServer() {
   await server.connect(transport);
 
