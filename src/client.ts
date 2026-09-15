@@ -9,6 +9,7 @@ import { readServerInfo } from "./client/resources/read-server-info";
 import { readTasks } from "./client/resources/read-tasks";
 import { readTaskById } from "./client/resources/read-task";
 import { reviewTask } from "./client/prompts/review-task";
+import { ResourceListChangedNotificationSchema } from "@modelcontextprotocol/sdk/types";
 
 const client = new Client({
   name: "MCP Task Client",
@@ -24,6 +25,14 @@ const transport = new StdioClientTransport({
 async function startClient() {
   await client.connect(transport);
   console.log("MCP Client started");
+
+  // set notification handler for resource list changed
+  client.setNotificationHandler(
+    ResourceListChangedNotificationSchema,
+    async () => {
+      console.log("Resources list changed");
+    },
+  );
 
   // const tools = await client.listTools();
   // console.log("Tools", tools);
@@ -47,7 +56,7 @@ async function startClient() {
 
   //// TOOLS ////
   //////////////// create task //////////////////
-  //const createTaskResult = await createTask(client, "Learn MCP 2");
+  const createTaskResult = await createTask(client, "Learn MCP 200000");
 
   //////////////// list all tasks //////////////////
   //await listTasks(client);
@@ -76,7 +85,7 @@ async function startClient() {
 
   //// PROMPTS ////
   //////////////// review task //////////////////
-  await reviewTask(client, "cda5d771-1adb-4d0c-a9bb-0d55c3c2e6f9");
+  //await reviewTask(client, "cda5d771-1adb-4d0c-a9bb-0d55c3c2e6f9");
 }
 
 startClient();

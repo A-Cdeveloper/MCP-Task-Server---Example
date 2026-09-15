@@ -17,6 +17,8 @@ export function registerCreateTaskTool(server: McpServer) {
     },
     async ({ title }) => {
       const newTask = await createTask(title);
+      // send resource list changed to notify the client that the resources have changed
+      server.sendResourceListChanged();
       return {
         content: [
           {
