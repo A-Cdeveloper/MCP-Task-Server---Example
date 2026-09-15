@@ -7,7 +7,7 @@ export async function getTask(client: Client, id: string) {
     arguments: { id },
   });
   // @ts-ignore
-  console.log("Task:", task.content[0]?.text);
+  console.log("Task:", task.content[0]?.text, "isError:", task.isError);
 
   return task;
 }

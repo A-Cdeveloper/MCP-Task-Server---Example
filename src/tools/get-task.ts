@@ -21,6 +21,7 @@ export function registerGetTaskTool(server: McpServer) {
               text: `Task ${id} not found`,
             },
           ],
+          isError: true,
         };
       }
       return {

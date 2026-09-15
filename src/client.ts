@@ -56,7 +56,7 @@ async function startClient() {
 
   //// TOOLS ////
   //////////////// create task //////////////////
-  const createTaskResult = await createTask(client, "Learn MCP 200000");
+  //const createTaskResult = await createTask(client, "Learn MCP 200000");
 
   //////////////// list all tasks //////////////////
   //await listTasks(client);
@@ -64,6 +64,7 @@ async function startClient() {
   //////////////// get task //////////////////
   // @ts-ignore
   //await getTask(client, createTaskResult.structuredContent.id);
+  await getTask(client, "cda5d771-1adb-4d0c-a9bb-0d55c3c2e6f989");
 
   //////////////// update task //////////////////
   // await updateTask(
